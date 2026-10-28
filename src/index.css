@@ -1,0 +1,376 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #FBFAF7;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F4F2EC;
+    --bg-elevated: #FFFFFF;
+    --text-ink: #15171A;
+    --text-muted: #4B525C;
+    --border-color: #E6E3DC;
+    --border-hover: #D1CDC2;
+
+    --accent-blue-fill: #1A73E8;
+    --accent-blue-text: #1557B0;
+    --accent-blue-tint: #E8F0FE;
+
+    --accent-red-fill: #D93025;
+    --accent-red-text: #B31412;
+    --accent-red-tint: #FCE8E6;
+
+    --accent-green-fill: #188038;
+    --accent-green-text: #137333;
+    --accent-green-tint: #E6F4EA;
+
+    --accent-yellow-fill: #F9AB00;
+    --accent-yellow-text: #5F4100;
+    --accent-yellow-tint: #FEF7E0;
+
+    /* Section 5.2 Typography System Stacks */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-display: 'Bricolage Grotesque', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --bg-base: #0C0E12;
+    --bg-surface: #15181E;
+    --bg-subtle: #1E222A;
+    --bg-elevated: #262B35;
+    --text-ink: #F0F2F5;
+    --text-muted: #9CA3AF;
+    --border-color: #272C36;
+    --border-hover: #3B4353;
+
+    --accent-blue-fill: #1A73E8;
+    --accent-blue-text: #8AB4F8;
+    --accent-blue-tint: rgba(26, 115, 232, 0.2);
+
+    --accent-red-fill: #EA4335;
+    --accent-red-text: #F28B82;
+    --accent-red-tint: rgba(234, 67, 53, 0.2);
+
+    --accent-green-fill: #34A853;
+    --accent-green-text: #81C995;
+    --accent-green-tint: rgba(52, 168, 83, 0.2);
+
+    --accent-yellow-fill: #FBBC04;
+    --accent-yellow-text: #FDD663;
+    --accent-yellow-tint: rgba(251, 188, 4, 0.2);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-ink);
+    font-family: var(--font-sans);
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Fluid typography scale with clamp() (Section 5.2) */
+  h1 {
+    font-family: var(--font-display);
+    color: var(--text-ink);
+    font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.028em;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    color: var(--text-ink);
+    font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+    line-height: 1.22;
+    letter-spacing: -0.022em;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    color: var(--text-ink);
+    font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+    font-weight: 700;
+  }
+
+  /* Comfortable line length (60 to 75 characters) for body copy */
+  p {
+    max-width: 72ch;
+  }
+
+  /* Universal accessible focus indicators (2px blue ring with offset, Section 5.3) */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 4px #1A73E8;
+  }
+
+  html.dark :focus-visible {
+    box-shadow: 0 0 0 2px #0C0E12, 0 0 0 4px #8AB4F8;
+  }
+
+  /* Color blindness simulation filters for accessibility audit */
+  .filter-protanopia {
+    filter: url('#protanopia-filter');
+  }
+  .filter-deuteranopia {
+    filter: url('#deuteranopia-filter');
+  }
+  .filter-tritanopia {
+    filter: url('#tritanopia-filter');
+  }
+  .filter-achromatopsia {
+    filter: grayscale(100%);
+  }
+}
+
+/* =========================================================================
+   DARK THEME COMPREHENSIVE MAPPINGS & CONTRAST GOVERNANCE
+   ========================================================================= */
+
+html.dark body {
+  background-color: var(--bg-base);
+  color: var(--text-ink);
+}
+
+/* Text selections */
+html.dark ::selection {
+  background-color: rgba(26, 115, 232, 0.35);
+  color: #8AB4F8;
+}
+
+/* Headings */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: var(--text-ink);
+}
+
+/* Canvas & Surface Backgrounds */
+html.dark .bg-\[\#FBFAF7\],
+html.dark .bg-\[\#fbfaf7\] {
+  background-color: var(--bg-base) !important;
+}
+
+html.dark .bg-\[\#FFFFFF\],
+html.dark .bg-\[\#ffffff\],
+html.dark .bg-white {
+  background-color: var(--bg-surface) !important;
+}
+
+html.dark .bg-\[\#F4F2EC\],
+html.dark .bg-\[\#f4f2ec\] {
+  background-color: var(--bg-subtle) !important;
+}
+
+/* Translucent Sticky Header */
+html.dark header.bg-\[\#FBFAF7\]\/95 {
+  background-color: rgba(12, 14, 18, 0.92) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+/* Modals & Backdrop */
+html.dark .bg-\[\#15171A\]\/40 {
+  background-color: rgba(0, 0, 0, 0.72) !important;
+}
+
+/* Neutral Typography */
+html.dark .text-\[\#15171A\],
+html.dark .text-\[\#15171a\] {
+  color: var(--text-ink) !important;
+}
+
+html.dark .text-\[\#4B525C\],
+html.dark .text-\[\#4b525c\] {
+  color: var(--text-muted) !important;
+}
+
+html.dark .hover\:text-\[\#15171A\]:hover,
+html.dark .hover\:text-\[\#15171a\]:hover {
+  color: var(--text-ink) !important;
+}
+
+/* Structural Hairline Borders */
+html.dark .border-\[\#E6E3DC\],
+html.dark .border-\[\#e6e3dc\] {
+  border-color: var(--border-color) !important;
+}
+
+html.dark .hover\:border-\[\#D1CDC2\]:hover {
+  border-color: var(--border-hover) !important;
+}
+
+/* Hover & Active Backgrounds */
+html.dark .hover\:bg-\[\#F4F2EC\]:hover {
+  background-color: var(--bg-subtle) !important;
+}
+
+html.dark .hover\:bg-\[\#E6E3DC\]:hover {
+  background-color: var(--border-color) !important;
+}
+
+html.dark .active\:bg-\[\#E6E3DC\]:active {
+  background-color: var(--border-color) !important;
+}
+
+html.dark .active\:bg-\[\#D1CDC2\]:active {
+  background-color: var(--border-hover) !important;
+}
+
+/* Form Controls in Dark Mode */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark textarea,
+html.dark select {
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-ink) !important;
+  border-color: var(--border-color) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: rgba(156, 163, 175, 0.6) !important;
+}
+
+html.dark select option {
+  background-color: var(--bg-surface);
+  color: var(--text-ink);
+}
+
+/* Google Brand Accent Tints & Accessible Dark Mode Text (WCAG AA) */
+/* Blue */
+html.dark .bg-\[\#E8F0FE\],
+html.dark .bg-\[\#e8f0fe\] {
+  background-color: rgba(26, 115, 232, 0.22) !important;
+}
+
+html.dark .text-\[\#1557B0\],
+html.dark .text-\[\#1557b0\] {
+  color: #8AB4F8 !important;
+}
+
+html.dark .hover\:text-\[\#1557B0\]:hover,
+html.dark .hover\:text-\[\#1557b0\]:hover {
+  color: #ADC8FF !important;
+}
+
+html.dark .border-\[\#CEE0FD\],
+html.dark .border-\[\#cee0fd\] {
+  border-color: rgba(138, 180, 248, 0.35) !important;
+}
+
+/* Green */
+html.dark .bg-\[\#E6F4EA\],
+html.dark .bg-\[\#e6f4ea\] {
+  background-color: rgba(52, 168, 83, 0.22) !important;
+}
+
+html.dark .text-\[\#137333\],
+html.dark .text-\[\#137333\] {
+  color: #81C995 !important;
+}
+
+html.dark .border-\[\#CEEAD6\],
+html.dark .border-\[\#ceead6\] {
+  border-color: rgba(129, 201, 149, 0.35) !important;
+}
+
+/* Yellow / Amber */
+html.dark .bg-\[\#FEF7E0\],
+html.dark .bg-\[\#fef7e0\] {
+  background-color: rgba(251, 188, 4, 0.18) !important;
+}
+
+html.dark .text-\[\#5F4100\],
+html.dark .text-\[\#5f4100\] {
+  color: #FDD663 !important;
+}
+
+html.dark .border-\[\#FEEFC3\],
+html.dark .border-\[\#feefc3\] {
+  border-color: rgba(253, 214, 99, 0.35) !important;
+}
+
+/* Red */
+html.dark .bg-\[\#FCE8E6\],
+html.dark .bg-\[\#fce8e6\] {
+  background-color: rgba(234, 67, 53, 0.22) !important;
+}
+
+html.dark .text-\[\#B31412\],
+html.dark .text-\[\#b31412\] {
+  color: #F28B82 !important;
+}
+
+html.dark .border-\[\#FAD2CF\],
+html.dark .border-\[\#fad2cf\] {
+  border-color: rgba(242, 139, 130, 0.35) !important;
+}
+
+/* Keyboard keys */
+html.dark kbd {
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* SVG Line & Path strokes in dark mode */
+html.dark svg line[stroke="#15171A"],
+html.dark svg line[stroke="#15171a"],
+html.dark svg path[stroke="#15171A"],
+html.dark svg path[stroke="#15171a"] {
+  stroke: #F0F2F5 !important;
+}
+
+html.dark svg line[stroke="#E6E3DC"],
+html.dark svg line[stroke="#e6e3dc"] {
+  stroke: #272C36 !important;
+}
+
+html.dark svg circle[stroke="#FBFAF7"],
+html.dark svg circle[stroke="#fbfaf7"],
+html.dark svg circle[stroke="#FFFFFF"],
+html.dark svg circle[stroke="#ffffff"] {
+  stroke: #15181E !important;
+}
+
+/* Dark mode card shadows */
+html.dark .shadow-xs,
+html.dark .shadow-sm,
+html.dark [class*="shadow-\["] {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Reduced motion support (Section 5.5, Section 11) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}

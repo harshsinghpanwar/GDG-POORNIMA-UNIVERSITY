@@ -1,0 +1,8 @@
+{
+  "name": "Remix GDG POORNIMA UNIVERSITY",
+  "description": "Production-grade system architecture, elite design system token engine, WCAG AAA accessibility auditor, and Section 15-16 execution suite.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

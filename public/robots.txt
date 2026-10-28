@@ -1,0 +1,8 @@
+# Robots.txt for GDG on Campus Poornima University - Jaipur, India
+# Independent Student Community Portal
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://gdg-poornima.netlify.app/sitemap.xml

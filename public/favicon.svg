@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <!-- Original Git Branch Graph Motif (Section 5.4) -->
+  <!-- Main Trunk Path -->
+  <line x1="8" y1="4" x2="8" y2="28" stroke="#15171A" stroke-width="2.5" stroke-linecap="round" />
+  
+  <!-- Curved Feature Branch splitting and merging back -->
+  <path d="M8 10C8 14 24 12 24 16C24 20 8 18 8 22" stroke="#15171A" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+  <!-- 4 Colored Branch Graph Nodes: Blue, Red, Yellow, Green -->
+  <!-- Node 1: Blue (Base Trunk Commit) -->
+  <circle cx="8" cy="8" r="3.75" fill="#1A73E8" stroke="#FBFAF7" stroke-width="1.5" />
+
+  <!-- Node 2: Red (Branching Commit) -->
+  <circle cx="21" cy="13" r="3.5" fill="#D93025" stroke="#FBFAF7" stroke-width="1.5" />
+
+  <!-- Node 3: Yellow (Collaborative Merge Prep Commit) -->
+  <circle cx="21" cy="19" r="3.5" fill="#F9AB00" stroke="#FBFAF7" stroke-width="1.5" />
+
+  <!-- Node 4: Green (Merged Release Commit on Trunk) -->
+  <circle cx="8" cy="24" r="3.75" fill="#188038" stroke="#FBFAF7" stroke-width="1.5" />
+</svg>
